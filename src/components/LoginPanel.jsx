@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/LoginPanel.css';
 
-const LoginPanel = () => {
+const LoginPanel = ({ onLoginSuccess }) => {
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -19,7 +19,12 @@ const LoginPanel = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Login attempt with:', credentials);
-    // Add login logic here
+    // In a real application, you would verify credentials against a backend
+    // For demo purposes, we'll just simulate a successful login
+    if (credentials.username && credentials.password) {
+      // Call the onLoginSuccess callback provided by parent
+      onLoginSuccess();
+    }
   };
 
   return (
